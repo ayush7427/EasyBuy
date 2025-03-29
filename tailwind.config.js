@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        marquee: 'marquee 10s linear infinite',
+      },
+    },
   },
   plugins: [],
 }

@@ -10,7 +10,7 @@ import config from '../../../config/config';
 
 function Dashboard() {
     const context = useContext(myContext)
-    const { mode  , product , user , order} = context
+    const { mode, product, user, order } = context
 
     const admin = JSON.parse(localStorage.getItem("user"))
 
@@ -27,7 +27,7 @@ function Dashboard() {
                                 </div>
                                 <h2 className="title-font font-medium text-3xl text-black fonts1" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                     {admin?.user?.email === config.adminEmail ? "1" : "-"}
-                                    </h2>
+                                </h2>
                                 <p className=" text-cyan-500  font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Admin</p>
                             </div>
                         </div>

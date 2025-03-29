@@ -8,6 +8,7 @@ import ProductCard from "./productCard/productCard";
 import Track from "./track/track";
 import Layout from "./layout/layout";
 import Category from "./category/category";
+import Marquee from "./marquee/marqueeText";
 
 export {
     Filter,
@@ -19,5 +20,6 @@ export {
     ProductCard,
     Track,
     Layout,
-    Category
+    Category,
+    Marquee
 }
