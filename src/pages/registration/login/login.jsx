@@ -55,7 +55,7 @@ function Login() {
             setLoading(false)
             navigate("/")
         } catch (error) {
-            toast.error(error)
+            toast.error(error.message)
             setLoading(false)
         }
     }

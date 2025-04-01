@@ -85,7 +85,8 @@ function Signup() {
             setLoading(true)
             const users = await createUserWithEmailAndPassword(auth, email, password)
 
-            console.log(users);
+            // console.log(users);
+
 
 
             const user = {
@@ -93,7 +94,7 @@ function Signup() {
                 email: users.user.email,
                 uid: users.user.uid,
                 time: Timestamp.now(),
-                phone: phoneNumber,
+                phoneNumber: phoneNumber,
                 id: Math.random().toString(36).slice(2, 9)
             }
 
@@ -107,7 +108,7 @@ function Signup() {
             setLoading(false)
             navigate("/login")
         } catch (error) {
-            toast.error(error)
+            toast.error(error.message)
             setLoading(false)
         }
     }
