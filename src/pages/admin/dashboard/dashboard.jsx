@@ -1,12 +1,9 @@
 import React, { useContext } from 'react'
-import { FaUserCircle } from "react-icons/fa";
 import myContext from '../../../context/context';
 import { Layout } from '../../../components/index';
 import DashboardTab from './dashboardTab';
-import { SiProducthunt } from "react-icons/si";
-import { LiaOpencart } from "react-icons/lia";
-import { RiAdminFill } from "react-icons/ri";
 import config from '../../../config/config';
+import { FaUserTie, FaBoxOpen, FaShoppingCart, FaUsers } from "react-icons/fa";
 
 function Dashboard() {
     const context = useContext(myContext)
@@ -18,51 +15,56 @@ function Dashboard() {
         <Layout>
             <section className="text-gray-600 body-font mt-10 mb-10">
                 <div className="container px-5 mx-auto mb-10">
-                    <div className="flex flex-wrap -m-4 text-center">
+                    <div className="flex flex-wrap justify-center gap-6">
 
-                        <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-                            <div className=" border-2 hover:shadow-cyan-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }}>
-                                <div className="text-cyan-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-                                    <RiAdminFill size={50} />
-                                </div>
-                                <h2 className="title-font font-medium text-3xl text-black fonts1" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                        {/* Admin Card */}
+                        <div className="p-4 w-full sm:w-[22%]">
+                            <div className="relative border border-gray-500 bg-opacity-10 backdrop-blur-lg px-6 py-6 rounded-xl shadow-md transition-all transform hover:scale-105 hover:shadow-blue-500 bg-white dark:bg-gray-800">
+                                <FaUserTie size={60} className="text-blue-500 mx-auto mb-3" />
+                                <h2 className="title-font font-bold text-4xl text-black dark:text-white">
                                     {admin?.user?.email === config.adminEmail ? "1" : "-"}
                                 </h2>
-                                <p className=" text-cyan-500  font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Admin</p>
+                                <p className="text-blue-400 font-semibold">Admin</p>
                             </div>
                         </div>
 
-                        <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-                            <div className=" border-2 hover:shadow-cyan-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
-                                <div className="text-cyan-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-                                    <SiProducthunt size={50} />
-                                </div>
-                                <h2 className="title-font font-medium text-3xl text-black fonts1" style={{ color: mode === 'dark' ? 'white' : '' }}>{product.length <= 0 ? "-" : product.length}</h2>
-                                <p className=" text-cyan-500  font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Total Products</p>
+                        {/* Total Products Card */}
+                        <div className="p-4 w-full sm:w-[22%]">
+                            <div className="relative border border-gray-500 bg-opacity-10 backdrop-blur-lg px-6 py-6 rounded-xl shadow-md transition-all transform hover:scale-105 hover:shadow-green-500 bg-white dark:bg-gray-800">
+                                <FaBoxOpen size={60} className="text-green-500 mx-auto mb-3" />
+                                <h2 className="title-font font-bold text-4xl text-black dark:text-white">
+                                    {product.length <= 0 ? "-" : product.length}
+                                </h2>
+                                <p className="text-green-400 font-semibold">Total Products</p>
                             </div>
                         </div>
-                        <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-                            <div className=" border-2 hover:shadow-cyan-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }}>
-                                <div className="text-cyan-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-                                    <LiaOpencart size={50} />
-                                </div>
-                                <h2 className="title-font font-medium text-3xl text-black fonts1" style={{ color: mode === 'dark' ? 'white' : '' }}>{order.length}</h2>
-                                <p className=" text-cyan-500  font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Total Orders</p>
+
+                        {/* Total Orders Card */}
+                        <div className="p-4 w-full sm:w-[22%]">
+                            <div className="relative border border-gray-500 bg-opacity-10 backdrop-blur-lg px-6 py-6 rounded-xl shadow-md transition-all transform hover:scale-105 hover:shadow-red-500 bg-white dark:bg-gray-800">
+                                <FaShoppingCart size={60} className="text-red-500 mx-auto mb-3" />
+                                <h2 className="title-font font-bold text-4xl text-black dark:text-white">
+                                    {order.length}
+                                </h2>
+                                <p className="text-red-400 font-semibold">Total Orders</p>
                             </div>
                         </div>
-                        <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-                            <div className=" border-2 hover:shadow-cyan-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] bg-gray-100 border-gray-300    px-4 py-3 rounded-xl" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
-                                <div className="text-cyan-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
-                                    <FaUserCircle size={50} />
-                                </div>
-                                <h2 className="title-font font-medium text-3xl text-black fonts1" style={{ color: mode === 'dark' ? 'white' : '' }}>{user.length <= 0 ? "-" : user.length}</h2>
-                                <p className=" text-cyan-500  font-bold" style={{ color: mode === 'dark' ? 'white' : '' }}>Total Users</p>
+
+                        {/* Total Users Card */}
+                        <div className="p-4 w-full sm:w-[22%]">
+                            <div className="relative border border-gray-500 bg-opacity-10 backdrop-blur-lg px-6 py-6 rounded-xl shadow-md transition-all transform hover:scale-105 hover:shadow-purple-500 bg-white dark:bg-gray-800">
+                                <FaUsers size={60} className="text-purple-500 mx-auto mb-3" />
+                                <h2 className="title-font font-bold text-4xl text-black dark:text-white">
+                                    {user.length <= 0 ? "-" : user.length}
+                                </h2>
+                                <p className="text-purple-400 font-semibold">Total Users</p>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </section>
+
             <DashboardTab />
         </Layout>
     )
