@@ -67,7 +67,7 @@ function Login() {
                 {/* Left Side - Image Section */}
                 <div className="hidden md:flex w-1/2 justify-center items-center">
                     <img
-                        src="https://static.vecteezy.com/system/resources/previews/045/386/990/large_2x/illustration-of-ecommerce-vector.jpg"
+                        src="https://static.vecteezy.com/system/resources/previews/006/388/746/non_2x/women-happy-with-shopping-on-mobile-pay-by-credit-card-shopping-online-in-an-online-store-on-a-website-or-mobile-application-concept-loves-shopping-design-for-sale-banner-digital-marketing-vector.jpg"
                         alt="Login"
                         className="w-[90%] h-auto object-cover rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300"
                     />
