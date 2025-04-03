@@ -18,7 +18,7 @@ function App() {
           <Route path="/order" element={
             <ProtectedRoutes>
               <Order />
-          </ProtectedRoutes>} />
+            </ProtectedRoutes>} />
           <Route path="/dashboard" element={
             <ProtectedRoutesForAdmin>
               <Dashboard />
@@ -34,22 +34,18 @@ function App() {
               <UpdateProduct />
             </ProtectedRoutesForAdmin>
           } />
-          <Route path="/cart" element={
-            <ProtectedRoutes>
-              <Cart />
-            </ProtectedRoutes>
-          } />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/*" element={<NoPage />} />
-          <Route path="/category/:categoryname" element={<CategoryPage/>} />
-          <Route path="/profile" element={<ProfileSection/>} />
+          <Route path="/category/:categoryname" element={<CategoryPage />} />
+          <Route path="/profile" element={<ProfileSection />} />
 
         </Routes>
         <ToastContainer />
       </Router>
-    </MyState>
+    </MyState >
   )
 }
 
