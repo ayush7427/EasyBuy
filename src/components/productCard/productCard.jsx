@@ -34,17 +34,22 @@ function ProductCard() {
     }, [cartItem])
 
     return (
-        <section className="text-gray-600 body-font">
+        <section className="text-gray-600 body-font transition-colors duration-500 ease-in-out">
             {loading && <Loader />}
+
             <div className="container px-5 py-8 md:py-16 mx-auto">
+                {/* Section Header */}
                 <div className="lg:w-1/2 w-full mb-6 lg:mb-10">
-                    <h1 className="sm:text-4xl text-3xl font-extrabold title-font mb-2 text-gray-900"
-                        style={{ color: mode === 'dark' ? 'white' : '' }}>
-                        Our Latest Collection
+                    <h1
+                        className="sm:text-4xl text-3xl font-extrabold title-font mb-3"
+                        style={{ color: mode === 'dark' ? 'white' : '#1A202C' }}
+                    >
+                        ✨ Our Latest Collection
                     </h1>
-                    <div className="h-1 w-24 bg-blue-600 rounded"></div>
+                    <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
                 </div>
 
+                {/* Products Grid */}
                 <div className="flex flex-wrap -m-4">
                     {product
                         .filter((obj) => obj.title.toLowerCase().includes(searchkey))
@@ -54,35 +59,36 @@ function ProductCard() {
                         .map((item, index) => {
                             const { title, price, imageUrl, id } = item;
                             return (
-                                <div key={index} className="p-4 md:w-1/4 drop-shadow-lg">
-                                    <div className="h-full border-2 hover:shadow-xl transition-shadow duration-300 ease-in-out border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
-                                        style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '' }}>
-
-                                        <div onClick={() => navigate(`/productinfo/${id}`)}
-                                            className="flex justify-center cursor-pointer group">
-                                            <img className="rounded-2xl w-full h-80 p-2 transform group-hover:scale-110 transition-transform duration-300 ease-in-out"
+                                <div key={index} className="p-4 md:w-1/4 w-full">
+                                    <div
+                                        className={`h-full rounded-2xl overflow-hidden border border-opacity-20 shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out ${mode === 'dark'
+                                            ? 'bg-gray-800 border-gray-700 text-white'
+                                            : 'bg-white border-gray-200 text-gray-900'
+                                            }`}
+                                    >
+                                        {/* Product Image */}
+                                        <div onClick={() => navigate(`/productinfo/${id}`)} className="cursor-pointer group">
+                                            <img
+                                                className="rounded-2xl w-full h-64 object-cover object-center p-2 transform group-hover:scale-105 transition-transform duration-300"
                                                 src={imageUrl}
-                                                alt="product-image" />
+                                                alt={title}
+                                            />
                                         </div>
 
-                                        <div className="p-5 border-t-2">
-                                            <h2 className="tracking-widest text-xs title-font font-semibold text-gray-500 mb-1 uppercase"
-                                                style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                        {/* Product Info */}
+                                        <div className="p-4 border-t border-gray-300 dark:border-gray-700">
+                                            <p className="tracking-wide text-sm uppercase text-blue-500 font-medium mb-1">
                                                 EasyBuy
-                                            </h2>
-                                            <h1 className="title-font text-lg font-bold text-gray-900 mb-3"
-                                                style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                {title}
-                                            </h1>
-                                            <p className="leading-relaxed mb-3 text-lg font-semibold text-blue-700"
-                                                style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                ₹{price}
                                             </p>
+                                            <h2 className="text-xl font-semibold mb-1 truncate">{title}</h2>
+                                            <p className="text-lg font-bold text-blue-600 dark:text-blue-400 mb-4">₹{price}</p>
+
+                                            {/* Add to Cart Button */}
                                             <div className="flex justify-center">
                                                 <button type="button"
                                                     onClick={() => addCart(item)}
                                                     className="focus:outline-none text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm w-full py-2 transition-all duration-300 ease-in-out shadow-md">
-                                                    Add To Cart
+                                                    🛒 Add To Cart
                                                 </button>
                                             </div>
                                         </div>
@@ -93,6 +99,7 @@ function ProductCard() {
                 </div>
             </div>
         </section>
+
 
 
     )
