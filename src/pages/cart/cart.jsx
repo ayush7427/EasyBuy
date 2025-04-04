@@ -198,7 +198,6 @@ function Cart() {
                     </div>
                 </div>
             </div>
-            );
         </Layout>
     )
 }

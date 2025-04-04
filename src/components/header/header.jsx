@@ -1,8 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Link, useNavigate } from 'react-router-dom'
-import { BsFillCloudSunFill } from 'react-icons/bs'
-import { FiSun } from 'react-icons/fi'
+import { FaToggleOn, FaToggleOff } from "react-icons/fa";
 import myContext from '../../context/context'
 import { RxCross2 } from 'react-icons/rx'
 import config from '../../config/config'
@@ -114,10 +113,11 @@ export default function Header() {
                   </div>
                 </div>
 
+
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="#" className="-m-2 flex items-center p-2">
                     <img
-                      src="img/indiaflag.png"
+                      src="https://as1.ftcdn.net/jpg/07/55/22/20/1000_F_755222053_bJQeoLB6pt3bjlamWwxvBRVT5DDK6G51.webp"
                       alt=""
                       className="block h-auto w-5 flex-shrink-0"
                     />
@@ -226,15 +226,18 @@ export default function Header() {
                     className="px-8 py-3 w-full rounded-md bg-violet-0 border-transparent outline-0 text-sm" style={{ backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '', color: mode === 'dark' ? 'white' : '', }} />
                 </div>
 
-                {/* Search */}
+
                 <div className="flex lg:ml-6">
-                  <button className='' onClick={toggleMode}>
-                    {/* <MdDarkMode size={35} style={{ color: mode === 'dark' ? 'white' : '' }} /> */}
-                    {mode === 'light' ?
-                      (<FiSun className='' size={30} />
-                      ) : 'dark' ?
-                        (<BsFillCloudSunFill size={30} />
-                        ) : ''}
+                  <button
+                    onClick={toggleMode}
+                    className="flex items-center px-3 py-1 rounded-lg border-2 border-gray-300 dark:border-gray-200 bg-gray-600 dark:bg-gray-300 transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                  >
+                    {mode === "dark" ? (
+                      <FaToggleOn className="text-blue-500 text-3xl transition-all duration-300" />
+                    ) : (
+                      <FaToggleOff className="text-gray-500 border-gray-200 text-3xl transition-all duration-300" />
+                    )}
+
                   </button>
                 </div>
 
