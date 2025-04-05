@@ -36,74 +36,84 @@ const CategoryPage = () => {
 
     return (
         <Layout>
-            <div className="mt-10">
-                {/* Heading  */}
-                <div className="">
-                    <h1 className=" text-center mb-5 text-2xl font-semibold first-letter:uppercase">{categoryname}</h1>
+            <div className="mt-12">
+                {/* Section Heading */}
+                <div className="text-center mb-10">
+                    <h1 className="text-3xl font-extrabold capitalize" style={{ color: mode === 'dark' ? 'white' : '#4B5563' }}>
+                        🛒 {categoryname}
+                    </h1>
+                    <div className="mx-auto mt-2 w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
                 </div>
-                {loading ?
 
+                {/* Loader */}
+                {loading ? (
                     <div className="flex justify-center">
                         <Loader />
                     </div>
-
-                    :
-
-                    <section className="text-gray-600 body-font">
-                        {/* main 2 */}
-                        <div className="container px-5 py-5 mx-auto">
-                            {/* main 3  */}
-                            <div className="flex flex-wrap -m-4 justify-center">
-                                {filterProduct.length > 0 ?
-                                    <>
-                                        {filterProduct.map((item, index) => {
-                                            const { id, title, price, imageUrl } = item;
-                                            return (
-                                                <div key={index} className="p-4 w-full md:w-1/4">
-                                                    <div className="h-full border border-gray-300 rounded-xl overflow-hidden shadow-md cursor-pointer">
+                ) : (
+                    <section className="text-gray-600 body-font transition-colors duration-300 ease-in-out">
+                        <div className="container px-5 py-10 mx-auto">
+                            {filterProduct.length > 0 ? (
+                                <div className="flex flex-wrap -m-4 justify-center">
+                                    {filterProduct.map((item, index) => {
+                                        const { id, title, price, imageUrl } = item;
+                                        return (
+                                            <div key={index} className="p-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                                                <div
+                                                    className={`h-full rounded-2xl overflow-hidden shadow-md border border-opacity-20 transition duration-300 hover:shadow-xl cursor-pointer ${mode === 'dark'
+                                                        ? 'bg-gray-800 border-gray-700 text-white'
+                                                        : 'bg-white border-gray-200 text-gray-900'
+                                                        }`}
+                                                >
+                                                    {/* Image */}
+                                                    <div onClick={() => navigate(`/productinfo/${id}`)} className="group">
                                                         <img
-                                                            onClick={() => navigate(`/productinfo/${id}`)}
-                                                            className="lg:h-80  h-96 w-full"
+                                                            className="w-full h-64 object-cover object-center transition-transform duration-300 transform group-hover:scale-105 rounded-t-2xl"
                                                             src={imageUrl}
-                                                            alt="img"
+                                                            alt={title}
                                                         />
-                                                        <div className="p-6">
-                                                            <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>EasyBuy</h2>
-                                                            <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                                                            </h2>
-                                                            <h1 style={{ color: mode === 'dark' ? 'white' : '', }} className="title-font text-lg font-medium text-gray-900 mb-3">
-                                                                {title.substring(0, 25)}
-                                                            </h1>
-                                                            <h1 style={{ color: mode === 'dark' ? 'white' : '', }} className="title-font text-lg font-medium text-gray-900 mb-3">
-                                                                ₹{price}
-                                                            </h1>
-                                                            <div className="flex justify-center ">
-                                                                <button onClick={() => addCart(item)} className=" bg-blue-600 hover:bg-blue-700 w-full text-white py-[4px] rounded-lg font-bold">
-                                                                    cart
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                                    </div>
+
+                                                    {/* Info */}
+                                                    <div className="p-5 border-t border-gray-300 dark:border-gray-700">
+                                                        <p className="text-xs uppercase font-semibold tracking-wider text-blue-500 mb-1">
+                                                            EasyBuy
+                                                        </p>
+                                                        <h2 className="text-lg font-semibold mb-1 truncate">{title}</h2>
+                                                        <p className="text-base font-bold text-blue-600 dark:text-blue-400 mb-4">
+                                                            ₹{price}
+                                                        </p>
+
+                                                        {/* Button */}
+                                                        <button
+                                                            onClick={() => addCart(item)}
+                                                            className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white text-sm font-semibold py-2 rounded-lg shadow-md transition-all"
+                                                        >
+                                                            🛒 Add to Cart
+                                                        </button>
                                                     </div>
                                                 </div>
-                                            )
-                                        })}
-                                    </>
-
-                                    :
-
-                                    <div>
-                                        <div className="flex justify-center">
-                                            <img className=" mb-2" src="https://cdn-icons-png.flaticon.com/128/2748/2748614.png" alt="" />
-                                        </div>
-                                        <h1 className=" text-black text-xl">No {categoryname} product found</h1>
-                                    </div>
-                                }
-                            </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center justify-center mt-16 text-center">
+                                    <img
+                                        className="w-20 h-20 mb-4 opacity-70"
+                                        src="https://cdn-icons-png.flaticon.com/128/2748/2748614.png"
+                                        alt="Not found"
+                                    />
+                                    <h2 className="text-lg font-medium text-gray-700 dark:text-gray-300">
+                                        No <span className="capitalize">{categoryname}</span> products found
+                                    </h2>
+                                </div>
+                            )}
                         </div>
                     </section>
-
-                }
+                )}
             </div>
+
         </Layout>
     );
 
