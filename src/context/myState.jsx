@@ -105,7 +105,7 @@ export default function MyState(props) {
             toast.success("Product Updated successfully")
             getProductData();
             setLoading(false)
-            window.location.href = "/dashboard"
+            window.location.href = "/"
 
         } catch (error) {
             toast.error(error)
@@ -159,50 +159,50 @@ export default function MyState(props) {
 
     //  order details
 
-    const [order , setOrder] = useState([])
+    const [order, setOrder] = useState([])
     const getOrderData = async () => {
         setLoading(true)
         try {
-          const result = await getDocs(collection(fireDB, "order"))
-          const ordersArray = [];
-          result.forEach((doc) => {
-            ordersArray.push(doc.data());
-            setLoading(false)
-          });
-          setOrder(ordersArray);
-          // console.log(ordersArray)
-          setLoading(false);
+            const result = await getDocs(collection(fireDB, "order"))
+            const ordersArray = [];
+            result.forEach((doc) => {
+                ordersArray.push(doc.data());
+                setLoading(false)
+            });
+            setOrder(ordersArray);
+            // console.log(ordersArray)
+            setLoading(false);
         } catch (error) {
-          console.log(error)
-          setLoading(false)
+            console.log(error)
+            setLoading(false)
         }
-      }
+    }
 
-      const [userOrderData, setUserOrderData] = useState([]);
-      const getUserOrderData = async () => {
+    const [userOrderData, setUserOrderData] = useState([]);
+    const getUserOrderData = async () => {
         setLoading(true)
         try {
-          const result = await getDocs(collection(fireDB, "user"))
-          const usersArray = [
-              {
-                  name: "12",
-                  email: "12",
-                  uid: "dhf",
-                  date: "12 Aug"
-              }
-          ];
-          result.forEach((doc) => {
-            usersArray.push(doc.data());
-            setLoading(false)
-          });
-          setUserOrderData(usersArray);
-          // console.log(usersArray)
-          setLoading(false);
+            const result = await getDocs(collection(fireDB, "user"))
+            const usersArray = [
+                {
+                    name: "12",
+                    email: "12",
+                    uid: "dhf",
+                    date: "12 Aug"
+                }
+            ];
+            result.forEach((doc) => {
+                usersArray.push(doc.data());
+                setLoading(false)
+            });
+            setUserOrderData(usersArray);
+            // console.log(usersArray)
+            setLoading(false);
         } catch (error) {
-          console.log(error)
-          setLoading(false)
+            console.log(error)
+            setLoading(false)
         }
-      }
+    }
 
     useEffect(() => {
         getProductData()
@@ -210,9 +210,9 @@ export default function MyState(props) {
         getOrderData()
         getUserOrderData()
     }, [])
-    
+
     return (
-        <myContext.Provider value={{ mode, toggleMode, loading, setLoading, products, setProducts, addProduct, product, edithandle, updateProduct, deleteProduct , user , searchkey , filterType , filterPrice  , setSearchkey , setFilterPrice , setFilterType , setProduct, userOrderData , order}}>
+        <myContext.Provider value={{ mode, toggleMode, loading, setLoading, products, setProducts, addProduct, product, edithandle, updateProduct, deleteProduct, user, searchkey, filterType, filterPrice, setSearchkey, setFilterPrice, setFilterType, setProduct, userOrderData, order }}>
             {props.children}
         </myContext.Provider>
     )
