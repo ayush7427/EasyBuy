@@ -67,7 +67,7 @@ export default function Order(props) {
                                     <div className="flex justify-between items-center mb-3">
                                         <span className="text-gray-700 dark:text-gray-300">💰 Total Price:</span>
                                         <span className="font-bold text-blue-600 dark:text-blue-400 text-lg">
-                                            ₹{order.cartItems.reduce((acc, item) => acc + item.price * (item.quantity || 1), 0)}
+                                            ₹{order.cartItems.map((el) => el.price)}
                                         </span>
                                     </div>
 
