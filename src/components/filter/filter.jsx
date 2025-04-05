@@ -14,6 +14,7 @@ export default function Filter() {
     } = context;
 
     const [sortOption, setSortOption] = useState('');
+    // console.log([...product].map((el) => Number(el?.price.replace(/,/g, ""))));
 
     const callMe = () => {
         setSearchkey('');
@@ -28,10 +29,10 @@ export default function Filter() {
 
         switch (option) {
             case 'price-low':
-                sortedProducts.sort((a, b) => a.price - b.price);
+                sortedProducts.sort((a, b) => Number(a.price.replace(/,/g, "") - b.price.replace(/,/g, "")));
                 break;
             case 'price-high':
-                sortedProducts.sort((a, b) => b.price - a.price);
+                sortedProducts.sort((a, b) => Number(b.price.replace(/,/g, "") - a.price.replace(/,/g, "")));
                 break;
             case 'title-asc':
                 sortedProducts.sort((a, b) => a.title.localeCompare(b.title));
