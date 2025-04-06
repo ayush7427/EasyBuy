@@ -54,7 +54,12 @@ function Cart() {
     const [pincode, setPincode] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
 
+    const phoneNumberRegexExpression = /^[789]\d{9}$/g
+    const pincodeRegexExpression = /^[1-9][0-9]{5}$/g
+
     const buyNow = async () => {
+
+        // invalid input fields
         if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
             return toast.error("All fields are required", {
                 position: "top-center",
@@ -65,6 +70,34 @@ function Cart() {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
+            })
+        }
+
+        //  phoneNumber validation
+        if (!phoneNumberRegexExpression.test(phoneNumber)) {
+            return (toast.error("Invalid mobile number. Ensure it is exactly 10 digits long and starts with 7, 8, or 9."), {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+        }
+
+        // pincode validation
+        if (!pincodeRegexExpression.test(pincode)) {
+            return (toast.error("Please enter a valid 6-digit Indian PIN code starting with 1–9."), {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
             })
         }
 
