@@ -12,7 +12,9 @@ import Login from "./registration/login/login";
 import Signup from "./registration/signup/signup";
 import CategoryPage from "./category/categoryPage";
 import ProfileSection from "./profile/profile";
-
+import PrivacyPolicy from "./privacy/privacy";
+import ReturnPolicy from "./returnPolicy/returnPolicy";
+import ComingSoon from "./comingSoon/comingSoon";
 export {
     Dashboard,
     DashboardTab,
@@ -27,5 +29,8 @@ export {
     Login,
     Signup,
     CategoryPage,
-    ProfileSection
+    ProfileSection,
+    PrivacyPolicy,
+    ReturnPolicy,
+    ComingSoon
 }

@@ -12,10 +12,13 @@ export default function Footer() {
                 <div className="w-full md:w-1/4 mb-6 md:mb-0 px-4">
                     <h2 className="text-lg font-semibold tracking-widest mb-3">CATEGORIES</h2>
                     <nav className="list-none space-y-2">
-                        <li><a className="hover:text-gray-400">Home</a></li>
-                        <li><a className="hover:text-gray-400">Order</a></li>
-                        <li><a className="hover:text-gray-400">Local For Vocal</a></li>
-                        <li><a className="hover:text-gray-400">Cart</a></li>
+                        <Link to={"/"}><li><a className="hover:text-gray-400">Home</a></li></Link>
+
+                        <Link to={'/order'}><li><a className="hover:text-gray-400">Order</a></li></Link>
+
+                        <Link to={"/comingsoon"}><li><a className="hover:text-gray-400">Local For Vocal</a></li></Link>
+
+                        <Link to={"/cart"}><li><a className="hover:text-gray-400">Cart</a></li></Link>
                     </nav>
                 </div>
 
@@ -23,8 +26,8 @@ export default function Footer() {
                     <h2 className="text-lg font-semibold tracking-widest mb-3">CUSTOMER SERVICE</h2>
                     <nav className="list-none space-y-2">
                         <li><Link to='/returnpolicy' className="hover:text-gray-400">Return Policy</Link></li>
-                        <li><Link to='/about' className="hover:text-gray-400">About</Link></li>
-                        <li><Link to='/contact' className="hover:text-gray-400">Contact Us</Link></li>
+                        <li><Link to={"/comingsoon"} className="hover:text-gray-400">About</Link></li>
+                        <li><Link to={"/comingsoon"} className="hover:text-gray-400">Contact Us</Link></li>
                     </nav>
                 </div>
 
