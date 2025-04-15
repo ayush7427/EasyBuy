@@ -1,7 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Link, useNavigate } from 'react-router-dom'
-import { FaToggleOn, FaToggleOff } from "react-icons/fa";
+import { FaToggleOn, FaToggleOff, FaRegHeart } from "react-icons/fa";
 import myContext from '../../context/context'
 import { RxCross2 } from 'react-icons/rx'
 import config from '../../config/config'
@@ -282,7 +282,14 @@ export default function Header() {
                   </button>
                 </div>
 
+                <div className="ml-4 flow-root lg:ml-6">
+                  <Link to={"/comingsoon"}>
 
+                    <FaRegHeart />
+                  </Link>
+
+
+                </div>
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link to={'/cart'} className="group -m-2 flex items-center p-2" style={{ color: mode === 'dark' ? 'white' : '', }}>
@@ -299,6 +306,6 @@ export default function Header() {
           </div>
         </nav>
       </header>
-    </div>
+    </div >
   )
 }

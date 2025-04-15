@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom"
-import { AddProduct, AllProducts, Cart, CategoryPage, ComingSoon, Dashboard, Home, Login, NoPage, Order, PrivacyPolicy, ProductInfo, ProfileSection, ReturnPolicy, Signup, UpdateProduct } from "./pages/index"
+import { AddProduct, AllProducts, Cart, CategoryPage, ComingSoon, Dashboard, Home, Login, MyWishlist, NoPage, Order, PrivacyPolicy, ProductInfo, ProfileSection, ReturnPolicy, Signup, UpdateProduct } from "./pages/index"
 import MyState from "./context/myState"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -44,6 +44,7 @@ function App() {
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/returnpolicy" element={<ReturnPolicy />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
+          <Route path="/my-wishlist" element={<MyWishlist />} />
 
         </Routes>
         <ToastContainer />

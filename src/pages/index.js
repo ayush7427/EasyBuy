@@ -15,6 +15,8 @@ import ProfileSection from "./profile/profile";
 import PrivacyPolicy from "./privacy/privacy";
 import ReturnPolicy from "./returnPolicy/returnPolicy";
 import ComingSoon from "./comingSoon/comingSoon";
+import MyWishlist from "./myWishlist/myWishlist";
+
 export {
     Dashboard,
     DashboardTab,
@@ -32,5 +34,6 @@ export {
     ProfileSection,
     PrivacyPolicy,
     ReturnPolicy,
-    ComingSoon
+    ComingSoon,
+    MyWishlist
 }
