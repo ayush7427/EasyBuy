@@ -66,50 +66,92 @@ export default function Header() {
                     <RxCross2 />
                   </button>
                 </div>
-                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
 
-                  <Link to={'/allproducts'} className="text-sm font-medium text-gray-900 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                  <Link
+                    to="/allproducts"
+                    className="block text-base font-medium"
+                    style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                  >
                     All Products
                   </Link>
+
                   <div className="flow-root">
-                    <Link to={'/order'} style={{ color: mode === 'dark' ? 'white' : '', }} className="-m-2 block p-2 font-medium text-gray-900">
+                    <Link
+                      to="/order"
+                      className="-m-2 block p-2 text-base font-medium"
+                      style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                    >
                       Order
                     </Link>
                   </div>
 
-                  {admin?.user?.email === config.adminEmail ?
+                  {admin?.user?.email === config.adminEmail && (
                     <div className="flow-root">
-                      <Link to={'/dashboard'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                      <Link
+                        to="/dashboard"
+                        className="-m-2 block p-2 text-base font-medium"
+                        style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                      >
                         Admin
                       </Link>
                     </div>
-                    : ""}
+                  )}
 
-
-                  {user ?
-                    (
-                      <div className="flow-root">
-                        <a onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                          Logout
-                        </a>
-                      </div>
-                    ) :
-                    (
-                      <div className="flow-root">
-                        <Link to={'/signup'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
-                          Signup
-                        </Link>
-                      </div>
-                    )
-                  }
+                  {user ? (
+                    <div className="flow-root">
+                      <a
+                        onClick={logout}
+                        className="-m-2 block p-2 text-base font-medium cursor-pointer"
+                        style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                      >
+                        Logout
+                      </a>
+                    </div>
+                  ) : (
+                    <div className="flow-root">
+                      <Link
+                        to="/signup"
+                        className="-m-2 block p-2 text-base font-medium cursor-pointer"
+                        style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                      >
+                        Signup
+                      </Link>
+                    </div>
+                  )}
 
 
                   <div className="flow-root">
-                    <Link to={'/profile'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
+                    <Link
+                      to="/profile"
+                      className="-m-2 block p-2 text-base font-medium cursor-pointer"
+                      style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                    >
                       <img
                         className="inline-block w-10 h-10 rounded-full"
                         src="https://cdn.vectorstock.com/i/500p/18/68/teacher-minimalist-and-flat-logo-vector-51721868.avif"
-                        alt="Dan_Abromov" />                                        </Link>
+                        alt="Dan_Abromov"
+                      />
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4 mt-4">
+                    <span
+                      className="text-base font-medium"
+                      style={{ color: mode === 'dark' ? 'white' : 'black' }}
+                    >
+                      Dark Mode
+                    </span>
+                    <button
+                      onClick={toggleMode}
+                      className={`relative w-16 h-8 rounded-full transition-colors duration-300 
+        ${mode === 'dark' ? 'bg-blue-600' : 'bg-gray-300'}`}
+                    >
+                      <span
+                        className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-md transition-all duration-300 transform
+        ${mode === 'dark' ? 'translate-x-8' : 'translate-x-0'}`}
+                      ></span>
+                    </button>
                   </div>
                 </div>
 
@@ -227,19 +269,19 @@ export default function Header() {
                 </div>
 
 
-                <div className="flex lg:ml-6">
+                <div className="hidden lg:flex ml-4  lg:ml-6 items-center justify-between gap-4">
                   <button
                     onClick={toggleMode}
-                    className="flex items-center px-3 py-1 rounded-lg border-2 border-gray-300 dark:border-gray-200 bg-gray-600 dark:bg-gray-300 transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                    className={`relative w-12 h-6 rounded-full transition-colors duration-300 
+      ${mode === 'dark' ? 'bg-blue-600' : 'bg-gray-300'}`}
                   >
-                    {mode === "dark" ? (
-                      <FaToggleOn className="text-blue-500 text-3xl transition-all duration-300" />
-                    ) : (
-                      <FaToggleOff className="text-gray-500 border-gray-200 text-3xl transition-all duration-300" />
-                    )}
-
+                    <span
+                      className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-md transition-all duration-300 transform
+        ${mode === 'dark' ? 'translate-x-6' : 'translate-x-0'}`}
+                    ></span>
                   </button>
                 </div>
+
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
