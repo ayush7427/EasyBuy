@@ -1,7 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Link, useNavigate } from 'react-router-dom'
-import { FaToggleOn, FaToggleOff, FaRegHeart } from "react-icons/fa";
+import { FaToggleOn, FaToggleOff, FaRegHeart, FaUserCircle } from "react-icons/fa";
 import myContext from '../../context/context'
 import { RxCross2 } from 'react-icons/rx'
 import config from '../../config/config'
@@ -127,11 +127,7 @@ export default function Header() {
                       className="-m-2 block p-2 text-base font-medium cursor-pointer"
                       style={{ color: mode === 'dark' ? 'white' : 'black' }}
                     >
-                      <img
-                        className="inline-block w-10 h-10 rounded-full"
-                        src="https://cdn.vectorstock.com/i/500p/18/68/teacher-minimalist-and-flat-logo-vector-51721868.avif"
-                        alt="Dan_Abromov"
-                      />
+                      <FaUserCircle className="w-10 h-8 dark:bg-white rounded-full p-1" />
                     </Link>
                   </div>
 
@@ -245,10 +241,7 @@ export default function Header() {
                 </div>
                 <div className="hidden lg:ml-8 lg:flex">
                   <Link to={"/profile"} className="flex items-center text-gray-700 ">
-                    <img
-                      className="inline-block w-10 h-10 rounded-full"
-                      src="https://cdn.vectorstock.com/i/500p/18/68/teacher-minimalist-and-flat-logo-vector-51721868.avif"
-                      alt="Dan_Abromov" />
+                    <FaUserCircle className="w-10 h-8 dark:bg-white rounded-full p-1" />
                   </Link>
                 </div>
 
@@ -285,7 +278,7 @@ export default function Header() {
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link to={"/comingsoon"}>
 
-                    <FaRegHeart />
+                    <FaRegHeart className='w-5 h- ' />
                   </Link>
 
 
