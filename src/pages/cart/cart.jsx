@@ -30,6 +30,8 @@ function Cart() {
     // Calculation for price amount
     const [totalAmount, setTotalAmount] = useState(0);
 
+
+
     const cartPrice = cartItems.map((items) => {
         const price = items.price
         return price.replace(/,/g, "")
@@ -100,6 +102,21 @@ function Cart() {
                 theme: "light",
             })
         }
+
+
+        if (totalAmount === 0) {
+            return (toast.error("Please add products to cart before placing an order."), {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+        }
+
 
         const addressInfo = {
             name,
