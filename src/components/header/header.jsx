@@ -124,8 +124,8 @@ export default function Header() {
                   <div className="flow-root">
                     <Link
                       to="/profile"
-                      className="-m-2 block p-2 text-base font-medium cursor-pointer"
-                      style={{ color: mode === 'dark' ? 'black' : 'black' }}
+                      className="-m-2 block p-2 text-base font-medium cursor-pointer "
+                      style={{ color: mode === 'dark' ? 'black' : 'white' }}
                     >
                       <FaUserCircle className="w-10 h-8 dark:bg-white rounded-full p-1" />
                     </Link>
