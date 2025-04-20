@@ -125,7 +125,7 @@ export default function Header() {
                     <Link
                       to="/profile"
                       className="-m-2 block p-2 text-base font-medium cursor-pointer "
-                      style={{ color: mode === 'dark' ? 'black' : 'white' }}
+                      style={{ color: mode === 'dark' ? 'black' : 'black' }}
                     >
                       <FaUserCircle className="w-10 h-8 dark:bg-white rounded-full p-1" />
                     </Link>
