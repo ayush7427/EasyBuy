@@ -54,7 +54,7 @@ export default function MyState(props) {
             await addDoc(productRef, products)
             toast.success("Product Added")
             setTimeout(() => {
-                window.location.href = "/dashboard"
+                window.location.href = "/"
             }, 800)
             getProductData()
             setLoading(false)
