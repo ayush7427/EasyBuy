@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import { doc, getDoc } from "firebase/firestore"
 import { toast } from 'react-toastify'
 import { addToCart } from "../../redux/cartSlice"
+import { addToWishlist } from '../../redux/wishlist'
 import { fireDB } from "../../firebase/firebaseConfig"
 import { useDispatch } from "react-redux"
 
@@ -40,6 +41,12 @@ function ProductInfo() {
 
         dispatch(addToCart(items))
         navigate("/cart")
+    }
+
+    const addWishlist = (items) => {
+
+        dispatch(addToWishlist(items))
+        navigate("/my-wishlist")
     }
 
     return (
@@ -112,7 +119,7 @@ function ProductInfo() {
                                 </ul>
 
                                 {/* Price & Actions */}
-                                <div className="flex items-center">
+                                <div className="flex flex-wrap items-center gap-4 mt-6">
                                     <span
                                         className="title-font font-medium text-2xl"
                                         style={{ color: mode === 'dark' ? '#F7FAFC' : '#1A202C' }}
@@ -121,18 +128,18 @@ function ProductInfo() {
                                     </span>
 
                                     {/* Quantity Selector */}
-                                    <div className="ml-4 flex items-center border border-gray-300 rounded-lg">
+                                    <div className="flex items-center border border-gray-300 rounded-lg">
                                         <button
-                                            className="px-3 py-1 text-lg bg-gray-200 hover:bg-gray-300"
+                                            className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300"
                                             onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
                                         >
                                             -
                                         </button>
-                                        <span className="px-4 text-lg" style={{ color: mode === 'dark' ? '#CBD5E0' : '#2D3748' }}>
+                                        <span className="px-4 text-sm" style={{ color: mode === 'dark' ? '#CBD5E0' : '#2D3748' }}>
                                             {quantity}
                                         </span>
                                         <button
-                                            className="px-3 py-1 text-lg bg-gray-200 hover:bg-gray-300"
+                                            className="px-3 py-1 text-sm bg-gray-200 hover:bg-gray-300"
                                             onClick={() => setQuantity(quantity + 1)}
                                         >
                                             +
@@ -142,13 +149,16 @@ function ProductInfo() {
                                     {/* Add to Cart Button */}
                                     <button
                                         onClick={() => addCart(products, quantity)}
-                                        className="flex ml-auto text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 px-6 py-2 rounded-lg shadow-md"
+                                        className="flex items-center text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg shadow-md transition-all duration-300"
                                     >
                                         Add To Cart
                                     </button>
 
                                     {/* Wishlist Button */}
-                                    <button className="ml-4 p-2 border-2 border-gray-300 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300">
+                                    <button
+                                        onClick={() => addWishlist(products)}
+                                        className="p-2 border-2 border-gray-300 rounded-full hover:bg-red-500 hover:text-white transition-all duration-300"
+                                    >
                                         ❤️
                                     </button>
                                 </div>
@@ -157,7 +167,7 @@ function ProductInfo() {
                     )}
                 </div>
             </section>
-        </Layout>
+        </Layout >
 
 
     )
