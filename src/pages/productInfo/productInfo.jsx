@@ -18,7 +18,7 @@ function ProductInfo() {
     const params = useParams()
 
     const getProductData = async () => {
-
+        // get product data
         try {
             setLoading(true)
             const dataItems = await getDoc(doc(fireDB, "products", params.id))
