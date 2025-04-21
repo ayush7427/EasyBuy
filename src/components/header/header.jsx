@@ -276,7 +276,7 @@ export default function Header() {
                 </div>
 
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Link to={"/comingsoon"}>
+                  <Link to={"/my-wishlist"}>
 
                     <FaRegHeart className='w-5 h- ' />
                   </Link>
