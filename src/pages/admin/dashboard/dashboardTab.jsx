@@ -113,7 +113,7 @@ function DashboardTab() {
                                     </thead>
                                     <tbody>
                                         {order.map((item, index) =>
-                                            item.cartItems.map((items, i) => (
+                                            item.cartItems?.map((items, i) => (
                                                 <tr key={i} className="border-b hover:bg-gray-100 dark:hover:bg-gray-700">
                                                     <td className="px-6 py-4">{item.paymentId}</td>
                                                     <td className="px-6 py-4"><img className="w-16 rounded-lg" src={items.imageUrl} alt="Order" /></td>
