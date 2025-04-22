@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import myContext from '../../context/context'
 import { Layout, Loader } from "../../components/index"
+import { FaBoxOpen } from 'react-icons/fa';
 
 export default function Order(props) {
 
@@ -11,7 +12,7 @@ export default function Order(props) {
     return (
         <Layout>
             {loading && <Loader />}
-            {order.length > 0 ?
+            {order.filter(obj => obj.userid === userid).length > 0 ?
                 (
                     <div className="h-full pt-10">
                         {order.filter(obj => obj.userid === userid).map((order, index) => (
@@ -94,8 +95,12 @@ export default function Order(props) {
                         ))}
                     </div>
                 ) : (
-                    <div className="flex items-center justify-center h-[50vh]">
-                        <h2 className="text-center text-2xl text-red-700 font-semibold">No Orders Found</h2>
+                    <div className="flex flex-col items-center justify-center h-[50vh] bg-gradient-to-r from-red-100 via-red-50 to-pink-100 rounded-xl shadow-lg p-6 animate-fadeIn">
+                        <FaBoxOpen className="text-red-600 text-5xl mb-4 animate-bounce" />
+                        <h2 className="text-center text-2xl md:text-3xl text-red-700 font-semibold">
+                            No Orders Found
+                        </h2>
+                        <p className="text-red-500 mt-2 text-sm md:text-base">Looks like you haven’t placed any orders yet.</p>
                     </div>
                 )}
         </Layout>
