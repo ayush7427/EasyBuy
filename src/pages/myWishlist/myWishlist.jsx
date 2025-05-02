@@ -1,39 +1,34 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react';
 import myContext from '../../context/context.jsx';
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from '../../redux/cartSlice.js';
 import { removeFromWishlist } from '../../redux/wishlist.js';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { AiOutlineHeart, AiFillDelete } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { Layout } from "../../components/index.js";
 
-
-
 const MyWishlist = () => {
-
-    const context = useContext(myContext)
+    const context = useContext(myContext);
     const { loading, setLoading, mode } = context;
 
-    const cartItem = useSelector((state) => state.cart)
-    const wishlistItem = useSelector((state) => state.wishlist)
-    // console.log(wishlistItem)
+    const cartItem = useSelector((state) => state.cart);
+    const wishlistItem = useSelector((state) => state.wishlist);
 
-
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const deleteItem = (item) => {
-        dispatch(removeFromWishlist(item))
-    }
-    //  deletion item set new value in localstorage
+        dispatch(removeFromWishlist(item));
+    };
+
     useEffect(() => {
         localStorage.setItem('wishlist', JSON.stringify(wishlistItem));
-    }, [wishlistItem])
+    }, [wishlistItem]);
 
     const addCart = (item) => {
-        dispatch(addToCart(item))
+        dispatch(addToCart(item));
         toast.success('Product Added', {
             position: "top-right",
             autoClose: 1000,
@@ -44,20 +39,19 @@ const MyWishlist = () => {
             progress: undefined,
             theme: "colored",
         });
-    }
+    };
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cartItem))
-    }, [cartItem])
+        localStorage.setItem("cart", JSON.stringify(cartItem));
+    }, [cartItem]);
 
     return (
         <Layout>
-            <div className="min-h-screen px-6 py-12" style={{ color: mode === 'dark' ? 'white' : '#1A202C' }}>
-
+            <div className={`min-h-screen px-6 py-12 ${mode === 'dark' ? 'text-white' : 'text-[#1A202C]'}`}>
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <div className="lg:w-1/2 w-full mb-6 lg:mb-10">
-                        <h2 className="sm:text-4xl text-3xl font-extrabold mb-3 text-black dark:text-white">
+                        <h2 className={`sm:text-4xl text-3xl font-extrabold mb-3 ${mode === 'dark' ? 'text-white' : 'text-black'}`}>
                             ❤️ My Wishlist
                         </h2>
                         <div className="h-1 w-24 bg-gradient-to-r from-red-500 to-pink-500 rounded-full"></div>
@@ -70,8 +64,8 @@ const MyWishlist = () => {
                                 <div key={index} className="p-4 md:w-1/4 w-full">
                                     <div
                                         className={`h-full rounded-2xl overflow-hidden border border-opacity-20 shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out ${mode === 'dark'
-                                            ? 'bg-gray-800 border-gray-700 text-white'
-                                            : 'bg-white border-gray-200 text-gray-900'
+                                                ? 'bg-gray-800 border-gray-700 text-white'
+                                                : 'bg-white border-gray-200 text-gray-900'
                                             }`}
                                     >
                                         {/* Product Image */}
@@ -130,8 +124,8 @@ const MyWishlist = () => {
                         </div>
                     )}
                 </div>
-            </div >
-        </Layout >
+            </div>
+        </Layout>
     );
 };
 
